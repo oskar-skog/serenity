@@ -1,0 +1,24 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Oskar Skog <oskar@oskog97.com>
+Date: Mon, 25 Sep 2023 19:09:59 +0300
+Subject: [PATCH] Update configure.ac to match patch 7
+
+`0007-Set-name-of-shared-libpython.patch` only patches `configure`
+but not `configure.ac`.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 818044ad846dd47cd7d425e8870dc446971cb77a..61cbb6d0f3b31192495d58176c88c2f4c9700cd0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1492,7 +1492,7 @@ if test $enable_shared = "yes"; then
+ 	      PY3LIBRARY=libpython3.so
+ 	  fi
+           ;;
+-    Linux*|GNU*|NetBSD*|FreeBSD*|DragonFly*|OpenBSD*|VxWorks*)
++    Linux*|GNU*|NetBSD*|FreeBSD*|DragonFly*|OpenBSD*|VxWorks*|SerenityOS*)
+ 	  LDLIBRARY='libpython$(LDVERSION).so'
+ 	  BLDLIBRARY='-L. -lpython$(LDVERSION)'
+ 	  RUNSHARED=LD_LIBRARY_PATH=`pwd`${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}

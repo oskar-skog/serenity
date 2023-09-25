@@ -60,3 +60,12 @@ For now, it can be safely ignored until it's supported in the kernel.
 ## `0007-Set-name-of-shared-libpython.patch`
 
 Set name of shared libpython
+
+
+## `0008-Update-configure.ac-to-match-patch-7.patch`
+
+Update configure.ac to match patch 7
+
+`0007-Set-name-of-shared-libpython.patch` only patches `configure`
+but not `configure.ac`.
+
