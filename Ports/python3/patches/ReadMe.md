@@ -69,3 +69,8 @@ Update configure.ac to match patch 7
 `0007-Set-name-of-shared-libpython.patch` only patches `configure`
 but not `configure.ac`.
 
+## `0009-Set-CCSHARED-fPIC-in-configure.patch`
+
+Set CCSHARED=-fPIC in configure
+
+
