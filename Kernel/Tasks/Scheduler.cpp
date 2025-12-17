@@ -321,7 +321,10 @@ ShouldYield Scheduler::context_switch(Thread* thread)
     enter_current(*from_thread);
     VERIFY(thread == Thread::current());
 
-    return ShouldYield::No;
+    {
+        SpinlockLocker lock(thread->get_lock());
+        return thread->dispatch_one_pending_signal() == DispatchSignalResult::Yield ? ShouldYield::Yes : ShouldYield::No;
+    }
 }
 
 void Scheduler::enter_current(Thread& prev_thread)
