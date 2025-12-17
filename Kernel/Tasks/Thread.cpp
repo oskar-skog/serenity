@@ -623,7 +623,7 @@ bool Thread::tick()
     return m_ticks_left != 0;
 }
 
-void Thread::check_dispatch_pending_signal(YieldBehavior yield_behavior)
+void Thread::check_dispatch_pending_signal()
 {
     auto result = DispatchSignalResult::Continue;
     {
@@ -634,15 +634,7 @@ void Thread::check_dispatch_pending_signal(YieldBehavior yield_behavior)
     }
 
     if (result == DispatchSignalResult::Yield) {
-        switch (yield_behavior) {
-        case YieldBehavior::DoYield:
-            yield_without_releasing_big_lock();
-            break;
-        case YieldBehavior::FlagYield:
-            VERIFY_INTERRUPTS_DISABLED();
-            Processor::current().invoke_scheduler_async();
-            break;
-        }
+        yield_without_releasing_big_lock();
     }
 }
 

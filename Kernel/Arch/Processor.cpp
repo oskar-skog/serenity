@@ -288,7 +288,7 @@ void ProcessorBase::exit_trap(TrapFrame& trap)
     auto* current_thread = Processor::current_thread();
     if (current_thread) {
         SpinlockLocker thread_lock(current_thread->get_lock());
-        current_thread->check_dispatch_pending_signal(YieldBehavior::FlagYield);
+        current_thread->check_dispatch_pending_signal();
     }
 
     // Process the deferred call queue. Among other things, this ensures
